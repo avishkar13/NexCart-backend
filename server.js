@@ -21,11 +21,15 @@ app.use(cors({
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI, {
-  }).then(() => {
-    console.log('Connected to MongoDB');
-  }).catch((err) => {
-    console.error('MongoDB connection error:', err);
-  });
+  useNewUrlParser: true, // To use the new URL parser
+  useUnifiedTopology: true, // To use the new unified topology engine
+  socketTimeoutMS: 45000,  // Increase socket timeout to 45 seconds
+  connectTimeoutMS: 45000 // Increase connection timeout to 45 seconds
+}).then(() => {
+  console.log('Connected to MongoDB');
+}).catch((err) => {
+  console.error('MongoDB connection error:', err);
+});
 
 // Routes
 app.use('/api/auth', authRoutes);
