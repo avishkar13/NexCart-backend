@@ -33,7 +33,7 @@ router.post('/signup', async (req, res) => {
       });
     }
 
-    const hashedPassword = await bcrypt.hash(password, 10);
+    const hashedPassword = await bcrypt.hash(password, 6);
     const newUser = new User({ username, email, password: hashedPassword });
     await newUser.save();
 
@@ -132,7 +132,7 @@ router.put('/change-password', authenticate, async (req, res) => {
       });
     }
 
-    user.password = await bcrypt.hash(newPassword, 10);
+    user.password = await bcrypt.hash(newPassword, 6);
     await user.save();
 
     res.json({ message: 'Password changed successfully' });
