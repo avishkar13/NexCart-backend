@@ -12,7 +12,9 @@ const app = express();
 //Middleware
 app.use(express.json());
 app.use(cors({
-  origin: '*', // Allow all origins temporarily for debugging
+  origin: ['https://nex-cart.vercel.app', 'http://localhost:5173', 'http://localhost:5174'], // List of allowed origins
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
 }));
 
 
