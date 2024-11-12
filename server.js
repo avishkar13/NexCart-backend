@@ -21,9 +21,7 @@ app.use(cors({
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI, {
-  useNewUrlParser: true, // To use the new URL parser
-  useUnifiedTopology: true, // To use the new unified topology engine
-  socketTimeoutMS: 45000,  // Increase socket timeout to 45 seconds
+   socketTimeoutMS: 45000,  // Increase socket timeout to 45 seconds
   connectTimeoutMS: 45000 // Increase connection timeout to 45 seconds
 }).then(() => {
   console.log('Connected to MongoDB');
